@@ -33,20 +33,19 @@
     "/temples/": {
       "get": {
         "summary": "Returns a list of all temples in the database.",
-        "description": "Returns all temples stored in the database. Authentication may be required./n   APIKey: 123456",
+        "description": "Retrieves all temples from the database. Requires apiKey in header.",
         "parameters": [
           {
             "name": "apiKey",
             "in": "header",
+            "description": "API Key for authentication",
+            "required": true,
             "type": "string"
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -67,15 +66,15 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "example": "Temple Name"
+                  "example": "any"
                 },
                 "description": {
                   "type": "string",
-                  "example": "Temple description"
+                  "example": "any"
                 },
                 "location": {
                   "type": "string",
-                  "example": "City, State/Country"
+                  "example": "any"
                 }
               }
             }
@@ -97,44 +96,32 @@
     "/temples/{id}": {
       "get": {
         "summary": "Returns a single temple by ID.",
-        "description": "Returns all temples stored in the database. Authentication may be required./n   APIKey: 123456",
+        "description": "Retrieves a single temple from the database using its ID. Requires apiKey in header.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "Temple ID"
           },
           {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "description": {
-                  "type": "string",
-                  "example": "any"
-                },
-                "location": {
-                  "type": "string",
-                  "example": "any"
-                }
-              },
-              "required": [
-                "name",
-                "description",
-                "location"
-              ]
-            }
+            "name": "apiKey",
+            "in": "header",
+            "description": "API Key for authentication",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },

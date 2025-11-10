@@ -17,9 +17,9 @@ exports.create = (req, res) => {
       description: 'Temple information',
       required: true,
       schema: {
-        name: 'Temple Name',
-        description: 'Temple description',
-        location: 'City, State/Country'
+        name: 'any',
+        description: 'any',
+        location: 'any'
       }
     }
   */
@@ -56,8 +56,13 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   /*
     #swagger.summary = Returns a list of all temples in the database.
-    #swagger.description = 'Returns all temples stored in the database. Authentication may be required./n
-    APIKey: 123456
+    #swagger.description = 'Retrieves all temples from the database. Requires apiKey in header.'
+    #swagger.parameters['apiKey'] = {
+      in: 'header',
+      description: 'API Key for authentication',
+      required: true,
+      type: 'string'
+    }
   */
   console.log(req.header("apiKey"));
   if (req.header("apiKey") === apiKey) {
@@ -81,8 +86,19 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   /*
     #swagger.summary = Returns a single temple by ID.
-    #swagger.description = 'Returns all temples stored in the database. Authentication may be required./n
-    APIKey: 123456
+    #swagger.description = 'Retrieves a single temple from the database using its ID. Requires apiKey in header.'
+    #swagger.parameters['id'] = {
+      in: 'path',
+      description: 'Temple ID',
+      required: true,
+      type: 'string'
+    }
+    #swagger.parameters['apiKey'] = {
+      in: 'header',
+      description: 'API Key for authentication',
+      required: true,
+      type: 'string'
+    }
   */
   const id = req.params.id;
 
