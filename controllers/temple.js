@@ -11,8 +11,17 @@ const apiKey = process.env.API_KEY;
 exports.create = (req, res) => {
   /*
     #swagger.summary = Adds a temple to the database.
-    #swagger.description = 'Returns all temples stored in the database. Authentication may be required./n
-    APIKey: 123456
+    #swagger.description = 'Creates a new temple in the database.'
+    #swagger.parameters['body'] = {
+      in: 'body',
+      description: 'Temple information',
+      required: true,
+      schema: {
+        name: 'Temple Name',
+        description: 'Temple description',
+        location: 'City, State/Country'
+      }
+    }
   */
 
   // Validate request - Check required fields

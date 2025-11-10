@@ -7,6 +7,7 @@ const doc = {
     description: "LDS Temple API for BYU-Idaho CSE 341 ",
   },
   host: "localhost:3000",
+  schemes: ["http", "https"],
   securityDefinitions: {
     apiKeyAuth: {
       type: "apiKey",

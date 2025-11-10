@@ -8,7 +8,8 @@
   "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "http"
+    "http",
+    "https"
   ],
   "securityDefinitions": {
     "apiKeyAuth": {
@@ -54,17 +55,38 @@
       },
       "post": {
         "summary": "Adds a temple to the database.",
-        "description": "Returns all temples stored in the database. Authentication may be required./n   APIKey: 123456",
+        "description": "Creates a new temple in the database.",
         "parameters": [
           {
-            "name": "apiKey",
-            "in": "header",
-            "type": "string"
+            "name": "body",
+            "in": "body",
+            "description": "Temple information",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Temple Name"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Temple description"
+                },
+                "location": {
+                  "type": "string",
+                  "example": "City, State/Country"
+                }
+              }
+            }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
