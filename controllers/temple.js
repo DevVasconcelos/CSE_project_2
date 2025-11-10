@@ -12,7 +12,7 @@ exports.create = (req, res) => {
   /*
     #swagger.summary = Adds a temple to the database.
     #swagger.description = 'Returns all temples stored in the database. Authentication may be required./n
-    APIKey: Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N'
+    APIKey: 123456
   */
 
   // Validate request - Check required fields
@@ -48,7 +48,7 @@ exports.findAll = (req, res) => {
   /*
     #swagger.summary = Returns a list of all temples in the database.
     #swagger.description = 'Returns all temples stored in the database. Authentication may be required./n
-    APIKey: Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N'
+    APIKey: 123456
   */
   console.log(req.header("apiKey"));
   if (req.header("apiKey") === apiKey) {
@@ -73,7 +73,7 @@ exports.findOne = (req, res) => {
   /*
     #swagger.summary = Returns a single temple by ID.
     #swagger.description = 'Returns all temples stored in the database. Authentication may be required./n
-    APIKey: Ezl0961tEpx2UxTZ5v2uKFK91qdNAr5npRlMT1zLcE3Mg68Xwaj3N8Dyp1R8IvFenrVwHRllOUxF0Og00l0m9NcaYMtH6Bpgdv7N'
+    APIKey: 123456
   */
   const id = req.params.id;
 
