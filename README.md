@@ -10,7 +10,7 @@ It is deployed using Render and connected to a MongoDB Atlas database.
 
 - **Render Deployment:** https://cse-project-2.onrender.com  
 - **Swagger UI:** https://cse-project-2.onrender.com/api-docs  
-- **GitHub Repo:** https://github.com/DevVasconcelos/cse-341-project1
+- **GitHub Repo:** https://github.com/DevVasconcelos/CSE_project_2/
 
 ---
 
