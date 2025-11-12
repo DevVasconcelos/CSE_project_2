@@ -5,7 +5,7 @@
     "title": "My CSE 341 Temples API",
     "description": "LDS Temple API for BYU-Idaho CSE 341 with OAuth Authentication"
   },
-  "host": "localhost:3000",
+  "host": "https://cse-project-2.onrender.com",
   "basePath": "/",
   "schemes": [
     "http"
@@ -14,7 +14,7 @@
     "oAuth2": {
       "type": "oauth2",
       "flow": "implicit",
-      "authorizationUrl": "http://localhost:3000/auth/google",
+      "authorizationUrl": "https://cse-project-2.onrender.com/auth/google",
       "scopes": {
         "profile": "Access to user profile",
         "email": "Access to user email"
