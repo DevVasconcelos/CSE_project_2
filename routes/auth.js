@@ -16,8 +16,9 @@ routes.get(
   '/google/callback',
   passport.authenticate('google', { failureRedirect: '/auth/login/failed' }),
   (req, res) => {
-    // Successful authentication
-    res.redirect('/auth/login/success');
+    // Successful authentication - redirect to full URL
+    const appUrl = process.env.APP_URL || 'http://localhost:3000';
+    res.redirect(`${appUrl}/auth/login/success`);
   }
 );
 

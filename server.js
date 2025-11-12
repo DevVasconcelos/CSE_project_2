@@ -30,9 +30,18 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' 
+    ? [process.env.APP_URL, 'https://cse-project-2.onrender.com']
+    : '*',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
 app
   .use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-  .use(cors())
+  .use(cors(corsOptions))
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
   .use("/", require("./routes"));
