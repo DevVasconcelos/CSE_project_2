@@ -5,10 +5,10 @@
     "title": "My CSE 341 Temples API",
     "description": "LDS Temple API for BYU-Idaho CSE 341 with OAuth Authentication"
   },
-  "host": "https://cse-project-2.onrender.com",
+  "host": "cse-project-2.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "securityDefinitions": {
     "oAuth2": {
