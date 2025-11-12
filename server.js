@@ -13,23 +13,10 @@ var options = {
   }
 };
 
-// Session configuration
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET || 'your-secret-key',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-      maxAge: 24 * 60 * 60 * 1000, // 24 hours
-    },
-  })
-);
+// Trust proxy - importante para Render
+app.set('trust proxy', 1);
 
-// Initialize Passport
-app.use(passport.initialize());
-app.use(passport.session());
-
+// CORS configuration - DEVE vir ANTES da sessão
 const corsOptions = {
   origin: process.env.NODE_ENV === 'production' 
     ? [process.env.APP_URL, 'https://cse-project-2.onrender.com']
@@ -39,9 +26,29 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization']
 };
 
+app.use(cors(corsOptions));
+
+// Session configuration
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || 'your-secret-key',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === 'production',
+      httpOnly: true,
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    },
+  })
+);
+
+// Initialize Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 app
   .use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
-  .use(cors(corsOptions))
   .use(express.json())
   .use(express.urlencoded({ extended: true }))
   .use("/", require("./routes"));
@@ -63,7 +70,5 @@ db.mongoose
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+  console.log(`Server is running on port ${PORT}.`);
 });
-
-
