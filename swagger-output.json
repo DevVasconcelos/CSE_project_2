@@ -3,15 +3,23 @@
   "info": {
     "version": "1.0.0",
     "title": "My CSE 341 Temples API",
-    "description": "LDS Temple API for BYU-Idaho CSE 341 "
+    "description": "LDS Temple API for BYU-Idaho CSE 341 with OAuth Authentication"
   },
   "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "http",
-    "https"
+    "http"
   ],
   "securityDefinitions": {
+    "oAuth2": {
+      "type": "oauth2",
+      "flow": "implicit",
+      "authorizationUrl": "http://localhost:3000/auth/google",
+      "scopes": {
+        "profile": "Access to user profile",
+        "email": "Access to user email"
+      }
+    },
     "apiKeyAuth": {
       "type": "apiKey",
       "in": "header",
